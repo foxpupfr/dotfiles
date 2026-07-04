@@ -36,21 +36,22 @@ vim.cmd [[
 ]]
 vim.cmd.colorscheme "catppuccin-nvim"
 
+--treesitter changes
+vim.api.nvim_create_autocmd("FileType", {
+  callback = function()
+    local lang = vim.treesitter.language.get_lang(vim.bo.filetype)
+    if lang then
+      pcall(vim.treesitter.start, 0, lang)
+    end
+  end,
+})
+
 vim.opt.wrap = true
 vim.opt.breakindent = true
 vim.opt.linebreak = true
 
-vim.keymap.set("n", "<leader>se", "<cmd>nohlsearch<CR>", { desc = "Clear search highlights" })
-
 --lsp
 
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
+local coq = require "coq"
+vim.lsp.inline_completion.enable()
 
-local servers = { 'pyright', 'ts_ls', 'lua_ls', 'gopls', 'rust_analyzer' }
-
-for _, server in ipairs(servers) do
-    vim.lsp.config(server, {
-        capabilities = capabilities,
-    })
-    vim.lsp.enable(server)
-end

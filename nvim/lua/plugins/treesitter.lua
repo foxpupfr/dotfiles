@@ -1,18 +1,11 @@
 return {
   "nvim-treesitter/nvim-treesitter",
-  branch = "master",
-  lazy = false, -- We DON'T lazy load this because we want colors immediately
-  build = ":TSUpdate",
+  branch = "main", -- made some changes
+  lazy = false,
   config = function()
-    require("nvim-treesitter.configs").setup({
-      ensure_installed = {
-        "c", "python", "lua", "bash", "javascript", "java", "ruby", "zig",
-        "haskell", "ocaml", "perl", "asm", "go", "html", "css", "php",
-        "powershell", "xml", "yaml", "kotlin", "markdown", "typescript", "typst"
-      },
-      highlight = { enable = true },
-      indent = { enable = false }, -- Change to false to disable Treesitter auto-indentation
+    -- Simply run the top-level initializer now
+    require("nvim-treesitter").setup({
+      auto_install = true, 
     })
   end,
 }
-

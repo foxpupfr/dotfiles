@@ -1,4 +1,3 @@
--- ~/.config/nvim/lua/plugins/catppuccin.lua (corrected filename)
 return {
   "catppuccin/nvim",
   name = "catppuccin",
