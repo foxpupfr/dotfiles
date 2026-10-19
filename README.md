@@ -68,9 +68,10 @@ mv ~/.config/kitty.backup ~/.config/kitty
 - For aborting onesearch use `<Esc>`
 
 ### Commands
-- For installing treesitter parser for syntax highlighting while in Neovim normal mode paste exit and reopen Neovim.
+- For installing treesitter parser for syntax highlighting while in Neovim normal mode paste this, then exit and reopen Neovim.
 ```:TSInstall <language-name>```
-- Example 
+- Example
+
 ```:TSInstall python```
 ```:TSInstall rust```
 
