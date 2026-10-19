@@ -23,18 +23,23 @@ vim.opt.writebackup = false
 vim.opt.undofile = true   -- Saves undo history to a file so you can 
                           -- undo changes even after closing Neovim!
 -- -- ~/.config/nvim/init.lua
-vim.api.nvim_create_user_command('Sudow', 'w !sudo tee % > /dev/null', {})
+--vim.api.nvim_create_user_command('Sudow', 'w !sudo tee % > /dev/null', {})
 --make nvim background transparent
-vim.cmd [[
-  hi Normal guibg=NONE ctermbg=NONE
-  hi NormalNC guibg=NONE ctermbg=NONE
-  hi SignColumn guibg=NONE
-  hi VertSplit guibg=NONE
-  hi StatusLine guibg=NONE
-  hi StatusLineNC guibg=NONE
-  hi EndOfBuffer guibg=NONE
-]]
-vim.cmd.colorscheme "catppuccin-nvim"
+--vim.cmd [[
+--  hi Normal guibg=NONE ctermbg=NONE
+--  hi NormalNC guibg=NONE ctermbg=NONE
+--  hi SignColumn guibg=NONE
+--  hi VertSplit guibg=NONE
+--  hi StatusLine guibg=NONE
+--  hi StatusLineNC guibg=NONE
+--  hi EndOfBuffer guibg=NONE
+--]]
+
+--require("catppuccin").setup({
+--  transparent_background = false, -- Forces solid background
+--})
+vim.cmd.colorscheme "gruvbox-material"  -- Standard scheme name is usually "catppuccin" or "catppuccin-mocha"
+
 
 --treesitter changes
 vim.api.nvim_create_autocmd("FileType", {
@@ -49,9 +54,16 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.opt.wrap = true
 vim.opt.breakindent = true
 vim.opt.linebreak = true
-
+require("autoclose").setup()
+-- Minimal config
+require("themery").setup({
+  themes = {"gruvbox", "ayu", ...}, -- Your list of installed colorschemes.
+  livePreview = true, -- Apply theme while picking. Default to true.
+})
 --lsp
 
 local coq = require "coq"
+vim.lsp.enable('pyright')
+vim.lsp.enable('rust_analuszer')
 vim.lsp.inline_completion.enable()
 
