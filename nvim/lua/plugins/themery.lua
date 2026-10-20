@@ -3,7 +3,8 @@ return {
     lazy = false,
     config = function()
       require("themery").setup({
-        -- add the config here
+          themes = {"gruvbox","tokyonight","kanagawa-wave","kanagawa-dragon","catppuccin","nightfox","tokyodark","gruvbox-material","rose-pine-moon","rose-pine-dawn","kanagawa-lotus"},
+          livepreview = true,
       })
     end
   }

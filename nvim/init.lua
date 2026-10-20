@@ -1,45 +1,20 @@
-require("config.lazy")
-vim.opt.number = true
-vim.opt.smartindent = false
-vim.opt.autoindent = true
-vim.opt.smartindent = false
-
-vim.opt.tabstop = 4
+vim.opt.number = true --line numbering 
+vim.opt.smartindent = false --smart indent
+vim.opt.autoindent = true   -- auto indent
+vim.opt.tabstop = 4 --tab size
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.opt.termguicolors = true 
-require('config.options')
-require('config.keybinds')
-require('lualine').setup{
-    options = { theme = 'molokai' },
-}
--- ~/.config/nvim/init.lua
+vim.opt.wrap = true
+vim.opt.breakindent = true
+vim.opt.linebreak = true
 
-vim.opt.swapfile = false  -- Disables .swp files (No more E325 errors)
-vim.opt.backup = false    -- Disables ~ backup files
+require("config.lazy") --lazy
+require("config.keybinds")
+vim.opt.swapfile = false  -- Disables .swp files
+vim.opt.backup = false    -- Disables ~ backup
 vim.opt.writebackup = false 
-
--- Optional but recommended:
-vim.opt.undofile = true   -- Saves undo history to a file so you can 
-                          -- undo changes even after closing Neovim!
--- -- ~/.config/nvim/init.lua
---vim.api.nvim_create_user_command('Sudow', 'w !sudo tee % > /dev/null', {})
---make nvim background transparent
---vim.cmd [[
---  hi Normal guibg=NONE ctermbg=NONE
---  hi NormalNC guibg=NONE ctermbg=NONE
---  hi SignColumn guibg=NONE
---  hi VertSplit guibg=NONE
---  hi StatusLine guibg=NONE
---  hi StatusLineNC guibg=NONE
---  hi EndOfBuffer guibg=NONE
---]]
-
---require("catppuccin").setup({
---  transparent_background = false, -- Forces solid background
---})
-vim.cmd.colorscheme "gruvbox-material"  -- Standard scheme name is usually "catppuccin" or "catppuccin-mocha"
-
+vim.opt.undofile = true  
 
 --treesitter changes
 vim.api.nvim_create_autocmd("FileType", {
@@ -51,19 +26,19 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
-vim.opt.wrap = true
-vim.opt.breakindent = true
-vim.opt.linebreak = true
-require("autoclose").setup()
--- Minimal config
-require("themery").setup({
-  themes = {"gruvbox", "ayu", ...}, -- Your list of installed colorschemes.
-  livePreview = true, -- Apply theme while picking. Default to true.
-})
---lsp
+-- minor tweaks
+require("autoclose").setup() --autolose
+require('lualine').setup{options = { theme = 'molokai' },} --lualine
+require('mini.cmdline').setup() --mini cmdline plugin
 
+--lsp
 local coq = require "coq"
 vim.lsp.enable('pyright')
 vim.lsp.enable('rust_analuszer')
 vim.lsp.inline_completion.enable()
 
+
+--boarder control 
+vim.o.winborder = "rounded" --"rounded", "single", "double", "solid", "shadow", "none"
+vim.o.pumborder = "rounded" --
+vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#c0caf5" })

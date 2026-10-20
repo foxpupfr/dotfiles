@@ -3,8 +3,7 @@ return{
    ---@type CordConfig
 
 display = {
-  theme = 'classic',   -- 'default', 'atom', 'catppuccin', 'minecraft', 'void', 'classic'
-  flavor = 'dark',   -- 'dark', 'light', 'accent'
+  theme = 'catppuccin',   -- 'default', 'atom', 'catppuccin', 'minecraft', 'void', 'classic'
     }
 }
 
