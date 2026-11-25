@@ -42,3 +42,4 @@ vim.lsp.inline_completion.enable()
 vim.o.winborder = "rounded" --"rounded", "single", "double", "solid", "shadow", "none"
 vim.o.pumborder = "rounded" --
 vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#c0caf5" })
+
